@@ -4,8 +4,10 @@ class Character {
   final String image;
   final String status;
   final String species;
-  final String locationName;
-  final String firstEpisodeUrl;
+  final String gender;
+  final String origin;
+  final String location;
+  final String firstEpisode;
 
   Character({
     required this.id,
@@ -13,8 +15,10 @@ class Character {
     required this.image,
     required this.status,
     required this.species,
-    required this.locationName,
-    required this.firstEpisodeUrl,
+    required this.gender,
+    required this.origin,
+    required this.location,
+    required this.firstEpisode,
   });
 
   factory Character.fromJson(Map<String, dynamic> json) {
@@ -24,10 +28,10 @@ class Character {
       image: json['image'],
       status: json['status'],
       species: json['species'],
-      locationName: json['location']?['name'] ?? 'Unknown',
-      firstEpisodeUrl: (json['episode'] as List).isNotEmpty
-          ? json['episode'][0]
-          : 'Unknown',
+      gender: json['gender'],
+      origin: json['origin']['name'],
+      location: json['location']['name'],
+      firstEpisode: json['episode'].first,
     );
   }
 }

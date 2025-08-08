@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/character.dart';
+import '../views/character_detail_view.dart';
 
 class CharacterCard extends StatelessWidget {
   final Character character;
@@ -8,25 +9,35 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.black,
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Column(
-        children: [
-          Image.network(character.image),
-          Container(
-            width: double.infinity,
-            color: Colors.lightBlue,
-            padding: const EdgeInsets.all(12),
-            child: Text(
-              character.name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => CharacterDetailView(character: character),
+          ),
+        );
+      },
+      child: Card(
+        color: Colors.black,
+        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          children: [
+            Image.network(character.image),
+            Container(
+              width: double.infinity,
+              color: Colors.lightBlue,
+              padding: const EdgeInsets.all(12),
+              child: Text(
+                character.name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
