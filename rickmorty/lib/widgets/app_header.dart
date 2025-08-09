@@ -47,7 +47,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     Positioned(
                       top: 12.23,
-                      left: 0,
+                      left: 20,
                       child: IconButton(
                         onPressed: onLeftTap,
                         icon: Icon(leftIcon, color: Colors.white, size: 20.97),
@@ -74,7 +74,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                     ),
                     Positioned(
                       top: 12.23,
-                      right: 0,
+                      right: 20,
                       child: IconButton(
                         onPressed: onRightTap,
                         icon: Icon(rightIcon, color: Colors.white, size: 31.46),
