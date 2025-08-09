@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum AppHeaderStyle { home, detail }
-
 class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   const AppHeader({
     super.key,
-    this.style = AppHeaderStyle.home,
+    this.leftIcon = Icons.menu,
+    this.rightIcon = Icons.account_circle_outlined,
+    this.onLeftTap,
+    this.onRightTap,
     this.title = 'RICK AND MORTY API',
-    this.onBack,
-    this.onProfileTap,
+    this.logoAsset = 'assets/images/Logo2.png',
   });
 
-  final AppHeaderStyle style;
+  final IconData leftIcon;
+  final IconData rightIcon;
+  final VoidCallback? onLeftTap;
+  final VoidCallback? onRightTap;
   final String title;
-  final VoidCallback? onBack;
-  final VoidCallback? onProfileTap;
+  final String logoAsset;
 
-  static const double _barHeight = 112;
-  static const double _sidePadding = 20;
-  static const double _bottomSpacing = 19;
-
-  static const double _logoW = 116;
-  static const double _logoH = 75;
-
+  static const double _barHeight = 150.92;
+  static const double _sidePadding = 13.98;
+  static const double _logoW = 115;
+  static const double _logoH = 76.99;
+  static const double _gapTitle = 10;
   @override
   Size get preferredSize => const Size.fromHeight(_barHeight);
 
@@ -33,131 +33,76 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
       value: SystemUiOverlayStyle.light,
       child: Container(
         height: _barHeight,
-        color: const Color(0xFF0F0F0F),
+        color: const Color(0xFF1C1B1F),
         padding: const EdgeInsets.symmetric(horizontal: _sidePadding),
         child: SafeArea(
           bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: _bottomSpacing),
-            child: style == AppHeaderStyle.detail
-                ? _DetailHeader(
-                    title: title,
-                    onBack: onBack ?? () => Navigator.of(context).maybePop(),
-                    onProfileTap: onProfileTap,
-                  )
-                : const _HomeHeader(),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _HomeHeader extends StatelessWidget {
-  const _HomeHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    // Home = texto à esquerda + logo à direita (alinhados pela base)
-    return SizedBox(
-      height: 75,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              'RICK AND\nMORTY API',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontFamily: 'Lato',
-                fontSize: 20,
-                height: 1.05,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 1.2,
-                color: Colors.white,
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: SizedBox(
-              width: AppHeader._logoW,
-              height: AppHeader._logoH,
-              child: FittedBox(
-                fit: BoxFit.contain,
-                child: Image.asset('assets/images/LogoProjetoKobe.png'),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _DetailHeader extends StatelessWidget {
-  const _DetailHeader({
-    required this.title,
-    required this.onBack,
-    this.onProfileTap,
-  });
-
-  final String title;
-  final VoidCallback onBack;
-  final VoidCallback? onProfileTap;
-
-  @override
-  Widget build(BuildContext context) {
-    // Detail = seta + logo central + perfil / título centralizado abaixo
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        SizedBox(
-          height: 48,
-          child: Stack(
-            alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  onPressed: onBack,
-                  icon: const Icon(Icons.arrow_back, color: Colors.white),
-                  splashRadius: 22,
-                ),
-              ),
               SizedBox(
-                width: AppHeader._logoW,
-                height: AppHeader._logoH,
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Image.asset('assets/images/Logo2.png'),
+                height: _logoH,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Positioned(
+                      top: 12.23,
+                      left: 0,
+                      child: IconButton(
+                        onPressed: onLeftTap,
+                        icon: Icon(leftIcon, color: Colors.white, size: 20.97),
+                        splashRadius: 22,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
+                    ),
+                    Positioned(
+                      top: 10,
+                      left: 0,
+                      right: 0,
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: SizedBox(
+                          width: _logoW,
+                          height: _logoH,
+                          child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Image.asset(logoAsset),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 12.23,
+                      right: 0,
+                      child: IconButton(
+                        onPressed: onRightTap,
+                        icon: Icon(rightIcon, color: Colors.white, size: 31.46),
+                        splashRadius: 22,
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  onPressed: onProfileTap,
-                  icon: const Icon(Icons.account_circle, color: Colors.white),
-                  splashRadius: 22,
+
+              const SizedBox(height: _gapTitle),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontFamily: 'Lato',
+                  fontSize: 17,
+                  letterSpacing: 1.2,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 6),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontFamily: 'Lato',
-            fontSize: 14,
-            letterSpacing: 1.4,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

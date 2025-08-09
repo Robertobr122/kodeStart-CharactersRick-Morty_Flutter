@@ -12,16 +12,19 @@ class CharacterListView extends StatelessWidget {
     final controller = Provider.of<CharacterController>(context);
 
     return Scaffold(
-      appBar: const AppHeader(style: AppHeaderStyle.home),
+      appBar: AppHeader(
+        leftIcon: Icons.menu,
+        onLeftTap: () {}, 
+        rightIcon: Icons.account_circle_outlined,
+        onRightTap: () {}, 
+      ),
       body: controller.isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               padding: const EdgeInsets.only(bottom: 16, top: 8),
               itemCount: controller.characters.length,
-              itemBuilder: (context, index) {
-                final character = controller.characters[index];
-                return CharacterCard(character: character);
-              },
+              itemBuilder: (_, i) =>
+                  CharacterCard(character: controller.characters[i]),
             ),
     );
   }

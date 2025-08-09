@@ -4,13 +4,17 @@ import '../widgets/app_header.dart';
 
 class CharacterDetailView extends StatelessWidget {
   final Character character;
-
   const CharacterDetailView({super.key, required this.character});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppHeader(style: AppHeaderStyle.detail),
+      appBar: AppHeader(
+        leftIcon: Icons.arrow_back,
+        onLeftTap: () => Navigator.of(context).maybePop(),
+        rightIcon: Icons.account_circle_outlined,
+        onRightTap: () {}, 
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -30,7 +34,7 @@ class CharacterDetailView extends StatelessWidget {
             _info(
               'Primeira aparição (URL)',
               character.firstEpisode,
-            ), // depois trocamos pelo nome do episódio
+            ), 
           ],
         ),
       ),
