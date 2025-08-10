@@ -9,41 +9,38 @@ class CharacterDetailView extends StatelessWidget {
   static const _sidePadding = 20.0;
   static const _topFromHeader = 17.0;
   static const _cardW = 320.0;
-  static const _cardH = 410.0;
+  static const _cardH = 470.0;
   static const _radius = 16.0;
+
   static const _imgW = 320.0;
   static const _imgH = 160.0;
+
   static const _panelColor = Color(0xFF87A1FA);
 
   static const _nameStyle = TextStyle(
     fontSize: 14.5,
     fontWeight: FontWeight.w900,
-    color: Color.fromARGB(255, 255, 255, 255),
+    color: Colors.white,
   );
   static const _valueStyle = TextStyle(
     fontSize: 12.5,
     fontWeight: FontWeight.w600,
-    color: Color.fromARGB(255, 255, 255, 255),
+    color: Colors.white,
   );
-  static const _labelStyle = TextStyle(
+  static const _mutedStyle = TextStyle(
     fontSize: 12.5,
     fontWeight: FontWeight.w300,
-    color: Color.fromARGB(255, 255, 255, 255),
-  );
-  static const _linkStyle = TextStyle(
-    fontSize: 12.5,
-    fontWeight: FontWeight.w600,
-    color: Color.fromARGB(255, 255, 255, 255),
+    color: Colors.white70,
   );
 
   static const _leftInset = 16.0;
   static const _gapNameToSpecies = 38.0;
-  static const _gapSpeciesToLastSeenLabel = 15.0;
-  static const _gapLastSeenLabelToValue = 4.0;
-  static const _gapFirstSeenLabelFromLastSeenValue = 15.0;
-  static const _gapFirstSeenLabelToValue = 4.0;
+  static const _gapRow = 12.0;
+  static const _gapLabelToValue = 4.0;
+  static const _groupGap = 15.0;
   static const _panelBottomGap = 43.0;
-  static const _dotOuter = 9.0;
+
+  static const _dotOuter = 12.0;
   static const _dotInner = 6.0;
   static const _dotBorder = 1.5;
 
@@ -54,7 +51,6 @@ class CharacterDetailView extends StatelessWidget {
         leftIcon: Icons.arrow_back,
         onLeftTap: () => Navigator.of(context).maybePop(),
         rightImageAsset: 'assets/images/icon.png',
-        onRightTap: () {},
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -81,16 +77,6 @@ class CharacterDetailView extends StatelessWidget {
                             width: _imgW,
                             height: _imgH,
                             fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => Container(
-                              width: _imgW,
-                              height: _imgH,
-                              color: const Color(0xFF2A2A2A),
-                              alignment: Alignment.center,
-                              child: const Icon(
-                                Icons.broken_image,
-                                color: Colors.white54,
-                              ),
-                            ),
                           ),
                         ),
 
@@ -130,8 +116,8 @@ class CharacterDetailView extends StatelessWidget {
                                       child: Container(
                                         width: _dotInner,
                                         height: _dotInner,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.red,
+                                        decoration: BoxDecoration(
+                                          color: _statusColor(character.status),
                                           shape: BoxShape.circle,
                                         ),
                                       ),
@@ -147,31 +133,30 @@ class CharacterDetailView extends StatelessWidget {
                                 ],
                               ),
 
-                              const SizedBox(
-                                height: _gapSpeciesToLastSeenLabel,
-                              ),
+                              const SizedBox(height: _groupGap),
 
-                              const Text(
-                                'Last know location:',
-                                style: _labelStyle,
-                              ),
-                              const SizedBox(height: _gapLastSeenLabelToValue),
+                              _infoRow('Gender:', _cap(character.gender)),
+                              const SizedBox(height: _gapRow),
+
+                              _infoRow('Origin:', character.origin),
+                              const SizedBox(height: _groupGap),
+
+                              Text('Last known location:', style: _mutedStyle),
+                              const SizedBox(height: _gapLabelToValue),
                               Text(
                                 character.location,
-                                style: _linkStyle,
+                                style: _valueStyle,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
 
-                              const SizedBox(
-                                height: _gapFirstSeenLabelFromLastSeenValue,
-                              ),
+                              const SizedBox(height: _groupGap),
 
-                              const Text('First seen in:', style: _labelStyle),
-                              const SizedBox(height: _gapFirstSeenLabelToValue),
+                              Text('First seen in:', style: _mutedStyle),
+                              const SizedBox(height: _gapLabelToValue),
                               Text(
                                 character.firstEpisode,
-                                style: _linkStyle,
+                                style: _valueStyle,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -190,6 +175,33 @@ class CharacterDetailView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _infoRow(String label, String value) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(label, style: _mutedStyle),
+      const SizedBox(width: 6),
+      Expanded(
+        child: Text(
+          value,
+          style: _valueStyle,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    ],
+  );
+
+  static Color _statusColor(String status) {
+    switch (status.toLowerCase()) {
+      case 'alive':
+        return const Color(0xFF4CAF50);
+      case 'dead':
+        return const Color(0xFFE53935);
+      default:
+        return const Color(0xFFBDBDBD);
+    }
   }
 
   static String _cap(String s) =>
