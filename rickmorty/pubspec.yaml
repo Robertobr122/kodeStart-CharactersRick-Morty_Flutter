@@ -78,6 +78,7 @@ flutter:
   assets:
     - assets/images/LogoProjetoKobe.png
     - assets/images/Logo2.png
+    - assets/images/icon.svg
 
 
   fonts:

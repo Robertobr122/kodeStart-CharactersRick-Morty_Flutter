@@ -45,33 +45,33 @@ class CharacterCard extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                height: 40, // MOD: altura da tag = 40
+                height: 40, 
                 decoration: const BoxDecoration(
                   color: Color.fromRGBO(
                     135,
                     161,
                     250,
                     1,
-                  ), // TODO: ajuste para o HEX exato do Figma, se diferente
+                  ), 
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(
                       16,
-                    ), // MOD: cantos inferiores 16
+                    ), 
                     bottomRight: Radius.circular(
                       16,
-                    ), // MOD: cantos inferiores 16
+                    ), 
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  character.name.toUpperCase(), // MOD: caps como no protótipo
+                  character.name.toUpperCase(), 
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontFamily: 'Lato', // MOD: fonte Lato
-                    fontSize: 14.5, // MOD: tamanho 14.5
-                    fontWeight: FontWeight.w900, // MOD: peso 900
+                    fontFamily: 'Lato', 
+                    fontSize: 14.5, 
+                    fontWeight: FontWeight.w900, 
                     color: Colors.white,
                   ),
                 ),
