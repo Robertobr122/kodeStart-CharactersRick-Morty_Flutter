@@ -13,7 +13,6 @@ class CharacterDetailView extends StatelessWidget {
   static const _radius = 16.0;
   static const _imgW = 320.0;
   static const _imgH = 160.0;
-
   static const _panelColor = Color(0xFF87A1FA);
 
   static const _nameStyle = TextStyle(
@@ -44,7 +43,6 @@ class CharacterDetailView extends StatelessWidget {
   static const _gapFirstSeenLabelFromLastSeenValue = 15.0;
   static const _gapFirstSeenLabelToValue = 4.0;
   static const _panelBottomGap = 43.0;
-
   static const _dotOuter = 9.0;
   static const _dotInner = 6.0;
   static const _dotBorder = 1.5;
@@ -54,8 +52,9 @@ class CharacterDetailView extends StatelessWidget {
     return Scaffold(
       appBar: AppHeader(
         leftIcon: Icons.arrow_back,
-        rightIcon: Icons.account_circle_outlined,
         onLeftTap: () => Navigator.of(context).maybePop(),
+        rightImageAsset: 'assets/images/icon.png',
+        onRightTap: () {},
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -138,7 +137,6 @@ class CharacterDetailView extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-
                                   Flexible(
                                     child: Text(
                                       '${_cap(character.status)} - ${_cap(character.species)}',

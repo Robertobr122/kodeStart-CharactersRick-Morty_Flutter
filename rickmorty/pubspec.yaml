@@ -76,9 +76,7 @@ flutter:
   # example:
 
   assets:
-    - assets/images/LogoProjetoKobe.png
-    - assets/images/Logo2.png
-    - assets/images/icon.svg
+    - assets/images/
 
 
   fonts:

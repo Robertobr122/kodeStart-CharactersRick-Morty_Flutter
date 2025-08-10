@@ -14,7 +14,9 @@ class CharacterListView extends StatelessWidget {
     return Scaffold(
       appBar: AppHeader(
         leftIcon: Icons.menu,
-        rightIcon: Icons.account_circle_outlined,
+
+        rightImageAsset: 'assets/images/icon.png',
+        onRightTap: () {},
       ),
       body: controller.isLoading
           ? const Center(child: CircularProgressIndicator())

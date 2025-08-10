@@ -5,25 +5,27 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
   const AppHeader({
     super.key,
     this.leftIcon = Icons.menu,
-    this.rightIcon = Icons.account_circle_outlined,
     this.onLeftTap,
     this.onRightTap,
     this.title = 'RICK AND MORTY API',
     this.logoAsset = 'assets/images/Logo2.png',
+    this.rightImageAsset = 'assets/images/icon.png',
   });
 
   final IconData leftIcon;
-  final IconData rightIcon;
   final VoidCallback? onLeftTap;
   final VoidCallback? onRightTap;
   final String title;
   final String logoAsset;
+
+  final String rightImageAsset;
 
   static const double _barHeight = 150.92;
   static const double _sidePadding = 13.98;
   static const double _logoW = 115;
   static const double _logoH = 76.99;
   static const double _gapTitle = 10;
+
   @override
   Size get preferredSize => const Size.fromHeight(_barHeight);
 
@@ -56,6 +58,7 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                         constraints: const BoxConstraints(),
                       ),
                     ),
+
                     Positioned(
                       top: 10,
                       left: 0,
@@ -72,15 +75,18 @@ class AppHeader extends StatelessWidget implements PreferredSizeWidget {
                         ),
                       ),
                     ),
+
                     Positioned(
                       top: 12.23,
                       right: 20,
-                      child: IconButton(
-                        onPressed: onRightTap,
-                        icon: Icon(rightIcon, color: Colors.white, size: 31.46),
-                        splashRadius: 22,
-                        padding: EdgeInsets.zero,
-                        constraints: const BoxConstraints(),
+                      child: GestureDetector(
+                        onTap: onRightTap,
+                        child: Image.asset(
+                          rightImageAsset,
+                          width: 31.46,
+                          height: 31.46,
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
                   ],
