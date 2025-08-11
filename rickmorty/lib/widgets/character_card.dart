@@ -45,33 +45,24 @@ class CharacterCard extends StatelessWidget {
               right: 0,
               bottom: 0,
               child: Container(
-                height: 40, 
+                height: 40,
                 decoration: const BoxDecoration(
-                  color: Color.fromRGBO(
-                    135,
-                    161,
-                    250,
-                    1,
-                  ), 
+                  color: Color.fromRGBO(135, 161, 250, 1),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(
-                      16,
-                    ), 
-                    bottomRight: Radius.circular(
-                      16,
-                    ), 
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16),
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  character.name.toUpperCase(), 
+                  character.name.toUpperCase(),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
-                    fontFamily: 'Lato', 
-                    fontSize: 14.5, 
-                    fontWeight: FontWeight.w900, 
+                    fontFamily: 'Lato',
+                    fontSize: 14.5,
+                    fontWeight: FontWeight.w900,
                     color: Colors.white,
                   ),
                 ),

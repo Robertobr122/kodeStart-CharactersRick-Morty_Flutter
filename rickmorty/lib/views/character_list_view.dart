@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../controllers/character_controller.dart';
 import '../widgets/character_card.dart';
 import '../widgets/app_header.dart';
+import '../widgets/search_drawer.dart';
 
 class CharacterListView extends StatelessWidget {
   const CharacterListView({super.key});
@@ -10,11 +11,14 @@ class CharacterListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Provider.of<CharacterController>(context);
+    final scaffoldKey = GlobalKey<ScaffoldState>();
 
     return Scaffold(
+      key: scaffoldKey,
+      drawer: const SearchDrawer(),
       appBar: AppHeader(
         leftIcon: Icons.menu,
-
+        onLeftTap: () => scaffoldKey.currentState?.openDrawer(),
         rightImageAsset: 'assets/images/icon.png',
         onRightTap: () {},
       ),
