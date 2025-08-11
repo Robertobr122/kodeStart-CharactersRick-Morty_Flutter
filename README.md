@@ -8,19 +8,14 @@
 ---
 
 ## 📖 Descrição da Feature
-Esta feature implementa a **estrutura básica do aplicativo**, incluindo:
+Esta feature traz **melhorias no código base** e a **implementação de novas funcionalidades**, incluindo:
 
-- **Consumo da API** da série [Rick and Morty](https://rickandmortyapi.com/) para exibir a listagem de personagens.
-- **Listagem com informações principais**: nome e imagem de cada personagem.
-- **Navegação para a página de detalhes** ao clicar em um personagem, exibindo:
-  - Nome
-  - Imagem
-  - Espécie
-  - Gênero
-  - Status
-  - Origem
-  - Última localização
-  - Primeira aparição
+- **Botão de Pesquisa**: permite buscar personagens pelo nome, filtrando os resultados da listagem.
+- **Paginação**: adição de botões **Next** e **Previous** para avançar ou retornar nas páginas de personagens.
+  - Cada página exibe **20 personagens**.
+  - Navegação fluida para explorar todos os registros disponíveis na API.
+
+---
 
 
 
