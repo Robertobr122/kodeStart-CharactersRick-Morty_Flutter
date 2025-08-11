@@ -32,11 +32,7 @@ class _SearchDrawerState extends State<SearchDrawer> {
               const Text(
                 'Search character',
                 style: TextStyle(
-                  fontFamily: 'Lato',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
+                  fontFamily: 'Lato', fontSize: 18, fontWeight: FontWeight.w700, color: Colors.white),
               ),
               const SizedBox(height: 12),
               TextField(
