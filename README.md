@@ -1,25 +1,18 @@
-# Projeto em Desenvolvimento...
+<p align="center">
+  <img src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png" alt="Rick and Morty" width="200"/>
+</p>
 
-# Rick and Morty Flutter App
+<h1 align="center">Projeto de App para Buscar Personagens</h1>
+<h3 align="center">Projeto proposto no workshop Kode Start</h3>
 
-App desenvolvido em Flutter para consumo da [Rick and Morty API](https://rickandmortyapi.com/), baseado no protótipo fornecido pela Kobe.
+---
 
-## Funcionalidades implementadas:
+## 📖 Descrição da Feature
+Esta feature tem como objetivo **simular um fluxo de trabalho baseado no Git Flow**, no qual:
 
-- [x] Listagem de personagens com scroll
-- [x] Imagem e nome visíveis no card
-- [ ] Tela de detalhes com dados completos
-- [ ] Busca por nome (opcional)
+- As **features** desenvolvidas passam primeiro por uma **branch de homologação**.
+- Somente após a revisão e validação, as alterações são **mergeadas** para a **branch main**.
+- Esse processo garante maior controle de qualidade antes da entrega final.
 
-## Arquitetura
-
-- Flutter + Dart
-- Provider para gerenciamento de estado
-- MVC simplificado por camadas
-
-## Rodar o projeto
-
-```bash
-flutter pub get
-flutter run -t lib/main.dart
-
+> Como o projeto já foi concluído, esta branch está idêntica à `main`.  
+> Sua presença aqui serve apenas para **demonstrar a aplicação prática do fluxo Git Flow** em um cenário real de desenvolvimento.
