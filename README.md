@@ -1,25 +1,26 @@
-# Projeto em Desenvolvimento...
+<p align="center">
+  <img src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png" alt="Rick and Morty" width="200"/>
+</p>
 
-# Rick and Morty Flutter App
+<h1 align="center">Projeto de App para Buscar Personagens</h1>
+<h3 align="center">Projeto proposto no workshop Kode Start</h3>
 
-App desenvolvido em Flutter para consumo da [Rick and Morty API](https://rickandmortyapi.com/), baseado no protótipo fornecido pela Kobe.
+---
 
-## Funcionalidades implementadas:
+## 📖 Descrição da Feature
+Esta feature implementa a **estrutura básica do aplicativo**, incluindo:
 
-- [x] Listagem de personagens com scroll
-- [x] Imagem e nome visíveis no card
-- [ ] Tela de detalhes com dados completos
-- [ ] Busca por nome (opcional)
+- **Consumo da API** da série [Rick and Morty](https://rickandmortyapi.com/) para exibir a listagem de personagens.
+- **Listagem com informações principais**: nome e imagem de cada personagem.
+- **Navegação para a página de detalhes** ao clicar em um personagem, exibindo:
+  - Nome
+  - Imagem
+  - Espécie
+  - Gênero
+  - Status
+  - Origem
+  - Última localização
+  - Primeira aparição
 
-## Arquitetura
 
-- Flutter + Dart
-- Provider para gerenciamento de estado
-- MVC simplificado por camadas
-
-## Rodar o projeto
-
-```bash
-flutter pub get
-flutter run -t lib/main.dart
 
